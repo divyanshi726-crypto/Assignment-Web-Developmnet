@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Job Application Form</title>
+</head>
+<body>
+    <h1>Job Application Form</h1>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label>Full Name:</label>
+            <input type="text" name="name" required>
+            <br><br>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <br><br>
+
+            <label>Phone Number:</label>
+            <input type="tel" name="phone" required>
+            <br><br>
+
+            <label>Address:</label>
+            <textarea name="address" rows="3"></textarea>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Professional Information</legend>
+
+            <label>Position Applied For:</label>
+            <input type="text" name="position" required>
+            <br><br>
+
+            <label>Qualification:</label>
+            <select name="qualification">
+                <option>BCA</option>
+                <option>B.Tech</option>
+                <option>BBA</option>
+                <option>MCA</option>
+                <option>Other</option>
+            </select>
+            <br><br>
+
+            <label>Experience (in years):</label>
+            <input type="number" name="experience" min="0">
+            <br><br>
+
+            <label>Skills:</label>
+            <textarea name="skills" rows="3"
+                      placeholder="Enter your skills"></textarea>
+            <br><br>
+
+            <label>Upload Resume:</label>
+            <input type="file" name="resume"
+                   accept=".pdf,.doc,.docx">
+            <br><br>
+
+            <label>
+                <input type="checkbox" name="declaration" required>
+                I confirm that the information is correct.
+            </label>
+        </fieldset>
+
+        <br>
+        <button type="submit">Submit Application</button>
+        <button type="reset">Clear Form</button>
+    </form>
+</body>
+</html>
