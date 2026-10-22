@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Grid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            background: #1e1e1f;
+            color: white;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .product {
+            background: rgb(231, 228, 228);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px #2e2c2c;
+        }
+
+        .product h3 {
+            color: #141515;
+        }
+
+        .price {
+            color: rgb(22, 29, 22);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Product Grid</h1>
+
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const products = [
+            {name: "Pen", price: 20},
+            {name: "Bag", price: 800},
+            {name: "Bottle", price: 250}
+        ];
+
+        const grid = document.getElementById("grid");
+
+        products.forEach(function(product) {
+            const card = document.createElement("div");
+            card.className = "product";
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+
+            const price = document.createElement("p");
+            price.className = "price";
+            price.textContent = "Price: ₹" + product.price;
+
+            card.appendChild(name);
+            card.appendChild(price);
+            grid.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>

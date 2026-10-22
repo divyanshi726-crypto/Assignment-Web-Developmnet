@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Photo Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            background: #34495e;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 25px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery img:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Photo Gallery</h1>
+
+    <div class="gallery">
+        <img src="https://picsum.photos/id/10/400/300"
+             alt="Forest">
+
+        <img src="https://picsum.photos/id/29/400/300"
+             alt="Nature">
+
+        <img src="https://picsum.photos/id/37/400/300"
+             alt="Mountain">
+
+        <img src="https://picsum.photos/id/42/400/300"
+             alt="Flowers">
+
+        <img src="https://picsum.photos/id/57/400/300"
+             alt="Green landscape">
+
+        <img src="https://picsum.photos/id/65/400/300"
+             alt="Beach">
+
+        <img src="https://picsum.photos/id/76/400/300"
+             alt="Trees">
+
+        <img src="https://picsum.photos/id/82/400/300"
+             alt="Outdoor view">
+    </div>
+
+</body>
+</html>

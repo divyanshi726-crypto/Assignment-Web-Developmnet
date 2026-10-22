@@ -1,0 +1,95 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .dashboard{
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        grid-template-rows: 70px 1fr 50px;
+        grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer"
+
+    }
+    .header{
+        background: #1e293b;
+        color: white;
+        padding: 20px;
+        grid-area: header;
+        gap: 10px;
+    }
+    .sidebar{
+        background: #1e293b;
+        color: white;
+        padding: 20px;
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+       
+       
+
+    }
+    .main{
+        background: #f1f5f9;
+        color: black;
+        padding: 180px;
+        grid-area: main;
+        text-align: center;
+    }
+    .footer{
+        background: #1e293b;
+        color: white;
+        padding: 20px;
+        grid-area: footer;
+        text-align: center;
+    }
+
+</style>
+<body>
+    <div class="dashboard">
+        <!-- part1 -->
+        <header class="header">
+            <h1>Admin Dashboard</h1>
+        </header>
+
+
+
+        <!-- part2 -->
+         <aside class="sidebar">
+            <h2>Menu</h2>
+            <p>Dashboard</p>
+            <p>User</p>
+            <p>Product</p>
+            <p>Order</p>
+            <p>Setting </p>
+         </aside>
+         <main class="main">
+            <h2>Overview</h2>
+         </main>
+
+
+
+         <!-- part3 -->
+          <footer class="footer">
+            &copy; footer</footer>
+          
+    </div>
+</body>
+</html>
