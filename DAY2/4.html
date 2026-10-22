@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #263b5e;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: white;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul a:hover {
+            color: #ffd166;
+        }
+
+        /* Welcome Section */
+        .hero {
+            background-color: #dce8f5;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: #263b5e;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 22px;
+        }
+
+        .hero button {
+            background-color: #263b5e;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .hero button:hover {
+            background-color: #3e5d8b;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 45px 8%;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 28px;
+            color: #263b5e;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            width: 280px;
+            padding: 25px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px #00000010;
+        }
+
+        .card h3 {
+            color: #263b5e;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .card:hover {
+            box-shadow: 0 5px 14px #00000018;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .about h2 {
+            color: #263b5e;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 650px;
+            margin: auto;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #263b5e;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            font-size: 14px;
+        }
+
+        /* Mobile Design */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>My Website</h2>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Welcome to My Website</h1>
+
+        <p>
+            This is my landing page created using HTML and CSS.
+            I am learning web development and improving my
+            website design skills.
+        </p>
+
+        <button onclick="showMessage()">Learn More</button>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+
+        <p class="intro">
+            Here are some of the things we offer.
+        </p>
+
+        <div class="container">
+
+            <div class="card">
+                <h3>Web Design</h3>
+                <p>
+                    We create simple and attractive website layouts
+                    using HTML and CSS.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>
+                    We build useful web pages that are easy to use
+                    on different devices.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Responsive Design</h3>
+                <p>
+                    Our pages adjust to mobile phones, tablets
+                    and desktop screens.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About This Website</h2>
+
+        <p>
+            I created this website as part of my web development
+            assignment. It uses basic HTML elements, CSS styling,
+            Flexbox and a media query for mobile screens.
+        </p>
+    </section>
+
+    <footer>
+        <p>© 2026 My Website | Created by Me</p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert("Thank you for visiting my website!");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangular Profile Card</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6f6eb, #bae9d1, #c5ebcc);
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 750px;
+            display: flex;
+            background: rgb(236, 254, 212);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(20, 19, 19, 0.18);
+            transition: 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(215, 215, 217, 0.25);
+        }
+
+        .left-panel {
+            width: 36%;
+            padding: 35px 20px;
+            background: linear-gradient(160deg, #0c0c0f, #111210, #121210);
+            color: rgb(196, 192, 192);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            background: #ffffff30;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .left-panel h1 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .left-panel p {
+            font-size: 14px;
+            color: #2a2832;
+        }
+
+        .status {
+            margin-top: 18px;
+            background: #ffffff25;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .right-panel {
+            width: 64%;
+            padding: 35px;
+        }
+
+        .right-panel h2 {
+            color: #0e0e0e;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .about {
+            color: #1f1f20;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .detail-box {
+            background: rgb(248, 229, 229);
+            padding: 13px;
+            border-radius: 10px;
+            border-left: 4px solid #7c3aed;
+        }
+
+        .detail-box h3 {
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .detail-box p {
+            color: #1e293b;
+            font-size: 14px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .skills-title {
+            font-size: 16px;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .skills span {
+            background: #ede9fe;
+            color: #2f2d30;
+            padding: 7px 12px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 9px;
+            background: linear-gradient(90deg, #1b1b1f, #18171a);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.85;
+        }
+
+        @media (max-width: 600px) {
+            .profile-card {
+                flex-direction: column;
+            }
+
+            .left-panel,
+            .right-panel {
+                width: 100%;
+            }
+
+            .right-panel {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card">
+
+        <div class="left-panel">
+            <div class="profile-image">DM</div>
+
+            <h1>DIVYANSHI MISHRA</h1>
+            <p>Pursuing BCA(AIML)</p>
+
+            <div class="status">● Available for Projects</div>
+        </div>
+
+        <div class="right-panel">
+
+            <h2>About Me 👋</h2>
+
+            <p class="about">
+                Hello! I am a creative and passionate developer who enjoys
+                designing beautiful websites and learning new technologies.
+                I love turning ideas into attractive digital experiences.
+            </p>
+
+            <div class="details">
+                <div class="detail-box">
+                    <h3>📍 LOCATION</h3>
+                    <p>India</p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>🎓 EDUCATION</h3>
+                    <p>BCA Pursuing</p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>💼 EXPERIENCE</h3>
+                    <p>Academic Projects</p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>✉ EMAIL</h3>
+                    <p>mishradivyanshi726@gmail.com</p>
+                </div>
+            </div>
+
+            <h3 class="skills-title">My Skills</h3>
+
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Responsive Design</span>
+            </div>
+
+            <a class="contact-btn" href="mishradivyanshi726@gmail.com">
+                Contact Me ↗
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
