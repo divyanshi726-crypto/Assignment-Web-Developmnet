@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            padding: 20px;
+        }
+
+        .profile {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #0002;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0c0c0d;
+        }
+
+        p {
+            padding: 8px;
+            background: #f5f6ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile">
+        <h1>Student Profile</h1>
+        <div id="details"></div>
+    </div>
+
+    <script>
+        const student = {
+            name: "ANMOL GUPTA",
+            age: 19,
+            isEnrolled: true,
+            course: "BCA AIML",
+            subjects: ["Java", "Maths", "Web Development"],
+            marks: null
+        };
+
+        document.getElementById("details").innerHTML = `
+            <p><b>Name:</b> ${student.name}</p>
+            <p><b>Age:</b> ${student.age}</p>
+            <p><b>Enrolled:</b> ${student.isEnrolled}</p>
+            <p><b>Course:</b> ${student.course}</p>
+            <p><b>Subjects:</b> ${student.subjects.join(", ")}</p>
+            <p><b>Marks:</b> ${student.marks ?? "Not entered yet"}</p>
+        `;
+
+        console.log(student);
+        console.log(typeof student.name);
+        console.log(typeof student.age);
+        console.log(typeof student.isEnrolled);
+        console.log(typeof student.marks);
+    </script>
+
+</body>
+</html>

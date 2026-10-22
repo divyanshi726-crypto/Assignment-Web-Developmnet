@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3ceda;
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .box {
+            background: rgb(250, 248, 225);
+            width: min(350px, 100%);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #0002;
+            text-align: center;
+        }
+
+        h1 {
+            color: #151515;
+            font-size: 26px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4338ca;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #312e81;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Grade Calculator</h1>
+
+        <p>Enter your marks (0–100)</p>
+
+        <input
+            type="number"
+            id="marks"
+            placeholder="Enter marks"
+            min="0"
+            max="100"
+        >
+
+        <button onclick="calculateGrade()">Calculate Grade</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            const input = document.getElementById("marks");
+            const result = document.getElementById("result");
+            const value = input.value;
+
+            if (value.trim() === "") {
+                result.textContent = "Please enter your marks.";
+                return;
+            }
+
+            const marks = Number(value);
+
+            if (marks < 0 || marks > 100) {
+                result.textContent = "Please enter marks between 0 and 100.";
+            }
+            else if (marks >= 90) {
+                result.textContent = "Your Grade is A+";
+            }
+            else if (marks >= 80) {
+                result.textContent = "Your Grade is A";
+            }
+            else if (marks >= 70) {
+                result.textContent = "Your Grade is B";
+            }
+            else if (marks >= 60) {
+                result.textContent = "Your Grade is C";
+            }
+            else if (marks >= 40) {
+                result.textContent = "Your Grade is D";
+            }
+            else {
+                result.textContent = "Your Grade is F";
+            }
+        }
+    </script>
+
+</body>
+</html>
