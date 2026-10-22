@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f5fa;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .menu a:hover {
+            color: #f1c40f;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .content h1 {
+            color: #34495e;
+        }
+
+        .content p {
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                width: 100%;
+                padding-top: 20px;
+            }
+
+            .menu a {
+                display: block;
+                margin: 12px 0;
+            }
+
+            .menu.show {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>My Website</h2>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <div class="menu" id="menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="content" id="home">
+        <h1>Welcome to My Website</h1>
+        <p>This is my responsive navigation menu project.</p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("show");
+        }
+    </script>
+
+</body>
+</html>

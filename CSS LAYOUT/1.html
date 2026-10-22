@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e1f;
+            margin: 0;
+            padding: 50px 15px;
+        }
+
+        .card {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #f4eeee;
+        }
+
+        .left {
+            background: #090909;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            width: 35%;
+        }
+
+        .circle {
+            width: 85px;
+            height: 85px;
+            line-height: 85px;
+            border-radius: 50%;
+            background: white;
+            color: #333435;
+            font-size: 30px;
+            margin: 10px auto;
+        }
+
+        .right {
+            padding: 25px;
+            flex: 1;
+        }
+
+        h2 {
+            margin-top: 5px;
+            color: #14171a;
+        }
+
+        .skill {
+            display: inline-block;
+            background: #eaf0f8;
+            padding: 7px 10px;
+            margin: 4px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                flex-direction: column;
+            }
+
+            .left {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="left">
+        <div class="circle">DM</div>
+        <h3>Divyanshi</h3>
+        <p>BCA AIML Student</p>
+    </div>
+
+    <div class="right">
+        <h2>About Me</h2>
+        <p>Hello! I am a student interested in web development
+        and artificial intelligence.</p>
+
+        <h3>My Skills</h3>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">Java</span>
+        <span class="skill">Python</span>
+
+        <p><b>Email:</b> mishradivyanshi726@gmail.com</p>
+    </div>
+</div>
+
+</body>
+</html>

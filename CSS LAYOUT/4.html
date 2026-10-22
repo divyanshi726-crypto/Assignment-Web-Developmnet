@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Product Store</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+        }
+
+        header {
+            background-color: #100f0e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 35px 15px;
+        }
+
+        .product {
+            background-color: rgb(231, 228, 228);
+            width: 230px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px #d3d8de;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            background-color: #e8f0f8;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: #34495e;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #34495e;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #527394;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #34495e;
+            color: white;
+            padding: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Product Store</h1>
+        <p>Find your favourite products here!</p>
+    </header>
+
+    <div class="container">
+
+        <div class="product">
+            <div class="product-image">🎧</div>
+            <h3>Headphones</h3>
+            <p>Enjoy music with good sound quality.</p>
+            <p class="price">₹799</p>
+            <button onclick="showProduct('Headphones')">
+                View Product
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-image">⌚</div>
+            <h3>Smart Watch</h3>
+            <p>A stylish watch for everyday use.</p>
+            <p class="price">₹1499</p>
+            <button onclick="showProduct('Smart Watch')">
+                View Product
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🎒</div>
+            <h3>Backpack</h3>
+            <p>A comfortable bag for college students.</p>
+            <p class="price">₹999</p>
+            <button onclick="showProduct('Backpack')">
+                View Product
+            </button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>My Product Store | Student Project</p>
+    </footer>
+
+    <script>
+        function showProduct(name) {
+            alert("You selected " + name);
+        }
+    </script>
+
+</body>
+</html>
