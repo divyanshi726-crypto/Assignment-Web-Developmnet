@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Mini Projects</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #b5b7bd;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .card {
+            background: rgb(245, 241, 241);
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #0001;
+        }
+
+        h1, h2 {
+            color: #5e5d6b;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #bdbcc7;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #gradeResult, #tableResult {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>JavaScript Mini Projects</h1>
+
+        <!-- Mini Project 1: Grade Calculator -->
+        <section class="card">
+            <h2>1. Grade Calculator</h2>
+
+            <label for="marks">Enter marks (0–100):</label>
+            <input type="number" id="marks" min="0" max="100"
+                   placeholder="Enter your marks">
+
+            <button onclick="calculateGrade()">Calculate Grade</button>
+            <p id="gradeResult"></p>
+        </section>
+
+        <!-- Mini Project 2: Multiplication Table -->
+        <section class="card">
+            <h2>2. Multiplication Table</h2>
+
+            <label for="number">Enter a number:</label>
+            <input type="number" id="number" placeholder="Enter a number">
+
+            <button onclick="showTable()">Show Table</button>
+            <div id="tableResult"></div>
+        </section>
+    </div>
+
+    <script>
+        // Mini Project 1
+        function getGrade(mark) {
+            if (mark >= 90) {
+                return "A+";
+            } else if (mark >= 80) {
+                return "A";
+            } else if (mark >= 70) {
+                return "B";
+            } else if (mark >= 60) {
+                return "C";
+            } else if (mark >= 40) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        function calculateGrade() {
+            const value = document.getElementById("marks").value;
+            const result = document.getElementById("gradeResult");
+
+            if (value.trim() === "") {
+                result.textContent = "Please enter your marks.";
+                return;
+            }
+
+            const marks = Number(value);
+
+            if (marks < 0 || marks > 100) {
+                result.textContent = "Marks must be between 0 and 100.";
+                return;
+            }
+
+            result.textContent = "Your grade is: " + getGrade(marks);
+        }
+
+        // Mini Project 2
+        function showTable() {
+            const value = document.getElementById("number").value;
+            const result = document.getElementById("tableResult");
+
+            if (value.trim() === "") {
+                result.textContent = "Please enter a number.";
+                return;
+            }
+
+            const number = Number(value);
+
+            if (!Number.isFinite(number)) {
+                result.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            let output = "<h3>Table of " + number + "</h3>";
+
+            for (let i = 1; i <= 10; i++) {
+                output += number + " x " + i + " = " +
+                          (number * i) + "<br>";
+            }
+
+            result.innerHTML = output;
+        }
+    </script>
+</body>
+</html>

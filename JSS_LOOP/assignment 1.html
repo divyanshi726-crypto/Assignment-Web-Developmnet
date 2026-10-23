@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Utility Functions</title>
+</head>
+<body>
+    <h1>Math Utility Functions</h1>
+    <p>Open the browser Console to see the results.</p>
+
+    <script>
+        // 1. Addition
+        function add(a, b) {
+            return a + b;
+        }
+
+        // 2. Subtraction
+        function subtract(a, b) {
+            return a - b;
+        }
+
+        // 3. Multiplication
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        // 4. Division
+        function divide(a, b) {
+            if (b === 0) {
+                throw new Error("Cannot divide by zero");
+            }
+
+            return a / b;
+        }
+
+        // 5. Average of an array
+        function average(numbers) {
+            if (numbers.length === 0) {
+                throw new Error("Array cannot be empty");
+            }
+
+            let sum = 0;
+
+            for (let i = 0; i < numbers.length; i++) {
+                sum += numbers[i];
+            }
+
+            return sum / numbers.length;
+        }
+
+        // Test all five functions
+        console.log("Addition:", add(4, 3));
+        console.log("Subtraction:", subtract(4, 3));
+        console.log("Multiplication:", multiply(4, 3));
+        console.log("Division:", divide(4, 2));
+        console.log("Average:", average([2, 4, 6]));
+
+        // Test error handling
+        try {
+            console.log(divide(5, 0));
+        } catch (error) {
+            console.log("Error:", error.message);
+        }
+
+        try {
+            console.log(average([]));
+        } catch (error) {
+            console.log("Error:", error.message);
+        }
+    </script>
+</body>
+</html>

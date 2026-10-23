@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Debugging</title>
+</head>
+<body>
+    <h1>Debugging JavaScript</h1>
+    <p>Open the browser Console to see the output.</p>
+
+    <script>
+        // Corrected code: calculate the total of an array
+        function total(numbers) {
+            let sum = 0;
+
+            for (let i = 0; i < numbers.length; i++) {
+                sum += numbers[i];
+            }
+
+            return sum;
+        }
+
+        console.log("Total:", total([2, 3, 4]));
+
+        // Test another array
+        console.log("Total:", total([10, 20, 30]));
+
+        // Test an empty array
+        console.log("Empty array total:", total([]));
+    </script>
+</body>
+</html>
