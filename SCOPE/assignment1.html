@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 21 - Scope and Hoisting</title>
+</head>
+<body>
+    <h2>Scope and Hoisting</h2>
+    <p>Press F12 and open the Console to see the output.</p>
+
+    <script>
+        
+        console.log(a);
+        var a = 10;
+        console.log(a);
+
+        
+        let b = 20;
+        console.log(b);
+
+    
+        const c = 30;
+        console.log(c);
+
+        
+        greet();
+
+        function greet() {
+            console.log("Hello, JavaScript!");
+        }
+
+        
+        function showMessage() {
+            let message = "This is a local variable";
+            console.log(message);
+        }
+
+        showMessage();
+    </script>
+</body>
+</html>

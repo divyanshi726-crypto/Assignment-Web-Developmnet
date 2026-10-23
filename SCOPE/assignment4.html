@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment 24 - Test Cases</title>
+</head>
+<body>
+    <h2>JavaScript Testing</h2>
+    <p>Check the test results below.</p>
+    <ul id="results"></ul>
+
+    <script>
+        function isPositive(n) {
+            return typeof n === "number" &&
+                   Number.isFinite(n) &&
+                   n > 0;
+        }
+
+        const tests = [
+            { input: 5, expected: true },
+            { input: 0, expected: false },
+            { input: -2, expected: false },
+            { input: "5", expected: false }
+        ];
+
+        const results = document.getElementById("results");
+
+        tests.forEach(function(test) {
+            const actual = isPositive(test.input);
+            const status = actual === test.expected
+                ? "PASS"
+                : "FAIL";
+
+            const li = document.createElement("li");
+            li.textContent =
+                "Input: " + test.input +
+                " | Expected: " + test.expected +
+                " | Actual: " + actual +
+                " | " + status;
+
+            results.appendChild(li);
+            console.log(li.textContent);
+        });
+    </script>
+</body>
+</html>

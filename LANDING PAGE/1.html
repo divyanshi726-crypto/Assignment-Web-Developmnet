@@ -2,148 +2,815 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Landing Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyleNest | Fashion & Essentials</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f6fa;
-            color: #263238;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 8%;
-            background: white;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f8fc;
+    color: #17233f;
+}
 
-        nav h2 {
-            color: #4338ca;
-            margin: 0;
-        }
+/* Navigation */
+.navbar {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 3px 15px #0000000b;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 20px;
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #172b4d;
+}
 
-        .hero {
-            padding: 50px 8%;
-            background: linear-gradient(130deg, #dbeafe, #ede9fe);
-            text-align: center;
-        }
+.logo span {
+    color: #e83e8c;
+}
 
-        .hero-content {
-            max-width: 700px;
-            margin: 50px auto;
-        }
+.nav-links {
+    display: flex;
+    gap: 23px;
+    flex-wrap: wrap;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
+.nav-links a {
+    text-decoration: none;
+    color: #344054;
+    font-size: 15px;
+}
 
-        .hero p {
-            line-height: 1.7;
-            color: #4b5563;
-        }
+.nav-links a:hover {
+    color: #e83e8c;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 24px;
-            background: #4338ca;
-            color: white;
-            text-decoration: none;
-            border-radius: 7px;
-        }
+.cart {
+    background: #172b4d;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+}
 
-        .features {
-            padding: 35px 8%;
-            text-align: center;
-        }
+/* Hero */
+.hero {
+    min-height: 390px;
+    padding: 65px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    background: linear-gradient(115deg, #fff0f5, #f4eaff, #e7f1ff);
+}
 
-        .feature-box {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.hero-content {
+    max-width: 560px;
+}
 
-        .card {
-            background: white;
-            padding: 22px;
-            width: 220px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px #0001;
-        }
+.label {
+    display: inline-block;
+    background: #ffe0ed;
+    color: #c02670;
+    padding: 9px 15px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+}
 
-        footer {
-            background: #263238;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-    </style>
+.hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.15;
+    margin: 22px 0;
+}
+
+.hero h1 span {
+    color: #e83e8c;
+}
+
+.hero p {
+    color: #5c6475;
+    line-height: 1.8;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.primary-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #172b4d;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #e83e8c;
+    transform: translateY(-3px);
+}
+
+.hero-art {
+    width: 320px;
+    height: 280px;
+    flex-shrink: 0;
+    background: linear-gradient(145deg, #f9b7d0, #d9c5ff);
+    border-radius: 45% 45% 20px 20px;
+    display: grid;
+    place-items: center;
+    font-size: 100px;
+    box-shadow: 0 18px 40px #a855f733;
+}
+
+/* Categories */
+.categories {
+    padding: 45px 7%;
+    background: white;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #667085;
+    line-height: 1.6;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.category {
+    text-align: center;
+    padding: 25px 12px;
+    background: #f8f7ff;
+    border-radius: 17px;
+    transition: 0.3s;
+}
+
+.category:hover {
+    background: #fce7f3;
+    transform: translateY(-5px);
+}
+
+.category-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.category h3 {
+    margin-bottom: 8px;
+}
+
+.category p {
+    font-size: 13px;
+    color: #667085;
+}
+
+/* Products */
+.products {
+    padding: 60px 7%;
+}
+
+.product-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.product-heading h2 {
+    font-size: 30px;
+}
+
+.product-heading p {
+    margin-top: 8px;
+    color: #667085;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 16px;
+    padding: 13px;
+    box-shadow: 0 5px 22px #172b4d0c;
+    transition: 0.3s;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px #172b4d16;
+}
+
+.product-image {
+    height: 190px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 85px;
+    margin-bottom: 17px;
+}
+
+.pink {
+    background: linear-gradient(135deg, #ffe0ed, #fff0f5);
+}
+
+.purple {
+    background: linear-gradient(135deg, #e9ddff, #f5edff);
+}
+
+.yellow {
+    background: linear-gradient(135deg, #fff0bd, #fff8e6);
+}
+
+.green {
+    background: linear-gradient(135deg, #c8f7df, #e7fff1);
+}
+
+.badge {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    background: #e83e8c;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 13px;
+    color: #667085;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.old-price {
+    color: #98a2b3;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-left: 7px;
+    font-weight: normal;
+}
+
+.rating {
+    color: #f5a623;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    background: #172b4d;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #e83e8c;
+}
+
+/* Essential Oils Banner */
+.oil-banner {
+    margin: 0 7% 60px;
+    border-radius: 22px;
+    padding: 45px;
+    background: linear-gradient(110deg, #d9fbe8, #b8f0db);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.oil-banner h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.oil-banner p {
+    color: #405e57;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 500px;
+}
+
+.oil-art {
+    font-size: 100px;
+    flex-shrink: 0;
+}
+
+/* Service Benefits */
+.benefits {
+    background: white;
+    padding: 35px 7%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.benefit {
+    padding: 10px;
+}
+
+.benefit span {
+    font-size: 32px;
+}
+
+.benefit h3 {
+    margin: 12px 0 7px;
+    font-size: 16px;
+}
+
+.benefit p {
+    color: #667085;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Newsletter */
+.newsletter {
+    padding: 55px 7%;
+    text-align: center;
+    background: #fce7f3;
+}
+
+.newsletter h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.newsletter p {
+    color: #667085;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.newsletter input {
+    width: min(300px, 100%);
+    padding: 13px;
+    border: 1px solid #e5b4cf;
+    border-radius: 9px;
+    outline-color: #e83e8c;
+    margin: 5px;
+}
+
+.newsletter button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 9px;
+    background: #e83e8c;
+    color: white;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background: #172b4d;
+    color: white;
+    padding: 40px 7% 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+footer a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #f9a8d4;
+}
+
+.copyright {
+    border-top: 1px solid #40516e;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid,
+    .benefits {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-art {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 17px 5%;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        gap: 16px;
+        font-size: 13px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 6%;
+    }
+
+    .hero-art {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .category-grid,
+    .product-grid,
+    .benefits,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .products,
+    .categories {
+        padding: 40px 5%;
+    }
+
+    .product-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .oil-banner {
+        margin: 0 5% 40px;
+        padding: 28px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .oil-banner h2 {
+        font-size: 27px;
+    }
+
+    .product-image {
+        height: 210px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <h2>MySite</h2>
-        <div>
-            <a href="#home">Home</a>
-            <a href="#features">Features</a>
-            <a href="#contact">Contact</a>
-        </div>
+<!-- Navigation -->
+<header class="navbar">
+    <div class="logo">Style<span>Nest</span></div>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#shop">Shop</a>
+        <a href="#oils">Oils</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Welcome to My Website</h1>
+    <button class="cart" onclick="showCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <span class="label">NEW COLLECTION</span>
+
+        <h1>Style Your <span>Everyday</span> Look</h1>
+
+        <p>
+            Discover trendy clothes, beautiful kurtis, comfortable
+            kids' wear and premium everyday essentials.
+            Find your style at prices you'll love.
+        </p>
+
+        <a href="#shop" class="primary-btn">Shop Now →</a>
+    </div>
+
+    <div class="hero-art">
+        👗
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="categories" id="categories">
+    <div class="section-heading">
+        <h2>Shop By Category</h2>
+        <p>Find your favourite products in one place.</p>
+    </div>
+
+    <div class="category-grid">
+        <div class="category">
+            <div class="category-icon">👔</div>
+            <h3>Men</h3>
+            <p>Shirts, T-shirts & Jeans</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">👗</div>
+            <h3>Women</h3>
+            <p>Kurtis, Dresses & Tops</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🧥</div>
+            <h3>Kids</h3>
+            <p>Comfortable Kids' Wear</p>
+        </div>
+
+        <div class="category">
+            <div class="category-icon">🌿</div>
+            <h3>Essential Oils</h3>
+            <p>Everyday Essentials</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="products" id="shop">
+    <div class="product-heading">
+        <div>
+            <h2>Featured Products ✨</h2>
+            <p>Popular picks selected just for you.</p>
+        </div>
+
+        <a href="#categories" style="color:#e83e8c;text-decoration:none">
+            Explore Categories →
+        </a>
+    </div>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <span class="badge">NEW</span>
+            <div class="product-image pink">👔</div>
+            <h3>Men's Casual Shirt</h3>
+            <p class="description">Comfortable everyday style.</p>
+            <div class="price">₹699 <span class="old-price">₹999</span></div>
+            <div class="rating">★★★★★ <span style="color:#667085">(4.5)</span></div>
+            <button class="add-btn" onclick="addToCart('Men Casual Shirt',699)">
+                🛒 Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <span class="badge">POPULAR</span>
+            <div class="product-image purple">👗</div>
+            <h3>Women's Printed Kurti</h3>
+            <p class="description">Elegant look for every occasion.</p>
+            <div class="price">₹799 <span class="old-price">₹999</span></div>
+            <div class="rating">★★★★★ <span style="color:#667085">(4.7)</span></div>
+            <button class="add-btn" onclick="addToCart('Printed Kurti',799)">
+                🛒 Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image yellow">🧥</div>
+            <h3>Kids' Hoodie</h3>
+            <p class="description">Soft and comfortable daily wear.</p>
+            <div class="price">₹599</div>
+            <div class="rating">★★★★☆ <span style="color:#667085">(4.4)</span></div>
+            <button class="add-btn" onclick="addToCart('Kids Hoodie',599)">
+                🛒 Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card">
+            <span class="badge">BEST SELLER</span>
+            <div class="product-image green">🌿</div>
+            <h3>Lavender Essential Oil</h3>
+            <p class="description">Aromatic oil for your home routine.</p>
+            <div class="price">₹399</div>
+            <div class="rating">★★★★★ <span style="color:#667085">(4.8)</span></div>
+            <button class="add-btn" onclick="addToCart('Lavender Oil',399)">
+                🛒 Add to Cart
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Essential Oils Banner -->
+<section class="oil-banner" id="oils">
+    <div>
+        <span class="label">NATURAL COLLECTION</span>
+        <h2>Discover Essential Oils 🌿</h2>
+        <p>
+            Explore aromatic essentials for your home and
+            self-care routine. Discover a fresh collection
+            of fragrance and everyday wellness products.
+        </p>
+        <a href="#shop" class="primary-btn">Explore Products →</a>
+    </div>
+
+    <div class="oil-art">🪴</div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits">
+    <div class="benefit">
+        <span>🚚</span>
+        <h3>Free Shipping</h3>
+        <p>On eligible orders</p>
+    </div>
+
+    <div class="benefit">
+        <span>🔒</span>
+        <h3>Secure Shopping</h3>
+        <p>Shop with confidence</p>
+    </div>
+
+    <div class="benefit">
+        <span>↩️</span>
+        <h3>Easy Returns</h3>
+        <p>As per return policy</p>
+    </div>
+
+    <div class="benefit">
+        <span>💬</span>
+        <h3>Customer Support</h3>
+        <p>We're here to help</p>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter" id="contact">
+    <h2>Join the StyleNest Family 💌</h2>
+    <p>Sign up for updates about new arrivals and special offers.</p>
+
+    <form onsubmit="subscribeUser(event)">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+    </form>
+
+    <p id="subscribeMessage" style="margin-top:15px"></p>
+</section>
+
+<!-- Footer -->
+<footer id="about">
+    <div class="footer-content">
+        <div>
+            <h3>Style<span style="color:#f9a8d4">Nest</span></h3>
             <p>
-                Learn new skills, explore technology and build
-                your future with simple and useful resources.
+                Your destination for fashion, everyday essentials
+                and products that complement your lifestyle.
             </p>
-            <a href="#features" class="btn">Explore More</a>
         </div>
-    </section>
 
-    <section class="features" id="features">
-        <h2>Our Features</h2>
-
-        <div class="feature-box">
-            <div class="card">
-                <h3>Learn</h3>
-                <p>Learn new skills step by step.</p>
-            </div>
-
-            <div class="card">
-                <h3>Practice</h3>
-                <p>Improve your skills with practice.</p>
-            </div>
-
-            <div class="card">
-                <h3>Grow</h3>
-                <p>Build projects and gain experience.</p>
-            </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#shop">Shop Products</a>
+            <a href="#categories">Categories</a>
+            <a href="#oils">Essential Oils</a>
         </div>
-    </section>
 
-    <footer id="contact">
-        <p>Contact: hello@mysite.com</p>
-        <p>© 2026 MySite</p>
-    </footer>
+        <div>
+            <h3>Customer Care</h3>
+            <a href="#contact">Contact Us</a>
+            <a href="#about">About Us</a>
+            <a href="#shop">Popular Products</a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 StyleNest. All Rights Reserved.</p>
+        <p>Fashion Today | Everyday Essentials</p>
+    </div>
+</footer>
+
+<script>
+let cart = [];
+let totalItems = 0;
+let totalPrice = 0;
+
+function addToCart(name, price) {
+    cart.push({ name: name, price: price });
+    totalItems++;
+    totalPrice += price;
+
+    document.getElementById("cartCount").textContent = totalItems;
+
+    alert(
+        name + " added to your cart!\n" +
+        "Cart Items: " + totalItems + "\n" +
+        "Cart Total: ₹" + totalPrice
+    );
+}
+
+function showCart() {
+    if (cart.length === 0) {
+        alert("Your cart is empty. Start shopping!");
+        return;
+    }
+
+    let message = "YOUR SHOPPING CART\n\n";
+
+    cart.forEach(function(item, index) {
+        message += (index + 1) + ". " + item.name +
+                   " - ₹" + item.price + "\n";
+    });
+
+    message += "\nTotal Items: " + totalItems;
+    message += "\nTotal Amount: ₹" + totalPrice;
+
+    alert(message);
+}
+
+function subscribeUser(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+
+    document.getElementById("subscribeMessage").textContent =
+        "Thank you for your interest! Email entered: " + email;
+
+    document.getElementById("email").value = "";
+}
+</script>
 
 </body>
 </html>

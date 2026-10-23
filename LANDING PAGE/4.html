@@ -1,121 +1,340 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grade Calculator</title>
+    <title>Student Grade Calculator</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: #e3ceda;
-            margin: 0;
+            background: linear-gradient(135deg, #e9d5ff, #fce7f3);
             min-height: 100vh;
-            display: grid;
-            place-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
-        .box {
-            background: rgb(250, 248, 225);
-            width: min(350px, 100%);
-            padding: 28px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px #0002;
-            text-align: center;
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px #6b21a820;
         }
 
         h1 {
-            color: #151515;
-            font-size: 26px;
+            text-align: center;
+            color: #7e22ce;
+            margin-bottom: 10px;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
         }
 
         input {
             width: 100%;
             padding: 12px;
-            margin: 15px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            border: 1px solid #d8b4fe;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #9333ea;
+            box-shadow: 0 0 5px #d8b4fe;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
         }
 
         button {
-            width: 100%;
+            flex: 1;
             padding: 12px;
-            background: #4338ca;
-            color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .calculate {
+            background: #9333ea;
+            color: white;
+        }
+
+        .calculate:hover {
+            background: #7e22ce;
+        }
+
+        .reset {
+            background: #f3e8ff;
+            color: #7e22ce;
         }
 
         button:hover {
-            background: #312e81;
+            transform: translateY(-2px);
         }
 
-        #result {
-            margin-top: 20px;
+        #message {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            background: #faf5ff;
+            border: 1px solid #e9d5ff;
+        }
+
+        .result h2 {
+            color: #7e22ce;
+            margin-bottom: 12px;
+        }
+
+        .grade {
+            font-size: 40px;
             font-weight: bold;
+            color: #9333ea;
+            margin: 10px 0;
+        }
+
+        .result p {
+            margin: 8px 0;
+            color: #444;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 7px 18px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .pass {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .fail {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media (max-width: 450px) {
+            .container {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="box">
-        <h1>Grade Calculator</h1>
+    <div class="container">
 
-        <p>Enter your marks (0–100)</p>
+        <h1>🎓 Grade Calculator</h1>
+        <p class="subtitle">Calculate your marks and grade easily</p>
 
-        <input
-            type="number"
-            id="marks"
-            placeholder="Enter marks"
-            min="0"
-            max="100"
-        >
+        <form id="gradeForm">
 
-        <button onclick="calculateGrade()">Calculate Grade</button>
+            <label for="name">Student Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                maxlength="60"
+            >
 
-        <p id="result"></p>
+            <label for="roll">Roll Number</label>
+            <input
+                type="text"
+                id="roll"
+                placeholder="Enter your roll number"
+                maxlength="30"
+            >
+
+            <label for="marks">Marks (Out of 100)</label>
+            <input
+                type="number"
+                id="marks"
+                placeholder="Enter marks from 0 to 100"
+                min="0"
+                max="100"
+                step="any"
+            >
+
+            <div class="buttons">
+                <button type="submit" class="calculate">
+                    Calculate Grade
+                </button>
+
+                <button type="button" class="reset" id="resetBtn">
+                    Reset
+                </button>
+            </div>
+
+        </form>
+
+        <div id="message" role="alert"></div>
+
+        <div class="result" id="result">
+            <h2>Your Result</h2>
+
+            <p id="studentInfo"></p>
+
+            <div class="grade" id="grade">A</div>
+
+            <p id="marksResult"></p>
+            <p id="percentage"></p>
+
+            <div class="status" id="status"></div>
+        </div>
+
+        <footer>
+            Student Grade Calculator | HTML, CSS & JavaScript
+        </footer>
+
     </div>
 
     <script>
-        function calculateGrade() {
-            const input = document.getElementById("marks");
-            const result = document.getElementById("result");
-            const value = input.value;
+        const form = document.getElementById("gradeForm");
+        const message = document.getElementById("message");
+        const result = document.getElementById("result");
 
-            if (value.trim() === "") {
-                result.textContent = "Please enter your marks.";
+        // Function to calculate grade
+        function getGrade(marks) {
+            if (marks >= 90) {
+                return "A+";
+            } else if (marks >= 80) {
+                return "A";
+            } else if (marks >= 70) {
+                return "B";
+            } else if (marks >= 60) {
+                return "C";
+            } else if (marks >= 40) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+
+        // Calculate result
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const roll = document.getElementById("roll").value.trim();
+            const marksText = document.getElementById("marks").value.trim();
+
+            message.style.display = "none";
+            result.style.display = "none";
+
+            if (name === "") {
+                showMessage("Please enter the student name.", "#fee2e2", "#991b1b");
                 return;
             }
 
-            const marks = Number(value);
+            if (marksText === "") {
+                showMessage("Please enter your marks.", "#fee2e2", "#991b1b");
+                return;
+            }
 
-            if (marks < 0 || marks > 100) {
-                result.textContent = "Please enter marks between 0 and 100.";
+            const marks = Number(marksText);
+
+            if (!Number.isFinite(marks) || marks < 0 || marks > 100) {
+                showMessage(
+                    "Marks must be between 0 and 100.",
+                    "#fee2e2",
+                    "#991b1b"
+                );
+                return;
             }
-            else if (marks >= 90) {
-                result.textContent = "Your Grade is A+";
-            }
-            else if (marks >= 80) {
-                result.textContent = "Your Grade is A";
-            }
-            else if (marks >= 70) {
-                result.textContent = "Your Grade is B";
-            }
-            else if (marks >= 60) {
-                result.textContent = "Your Grade is C";
-            }
-            else if (marks >= 40) {
-                result.textContent = "Your Grade is D";
-            }
-            else {
-                result.textContent = "Your Grade is F";
-            }
+
+            const grade = getGrade(marks);
+            const passed = marks >= 40;
+
+            document.getElementById("studentInfo").textContent =
+                "Name: " + name +
+                (roll ? " | Roll No: " + roll : "");
+
+            document.getElementById("grade").textContent = grade;
+
+            document.getElementById("marksResult").textContent =
+                "Marks Obtained: " + marks + "/100";
+
+            document.getElementById("percentage").textContent =
+                "Percentage: " + marks.toFixed(2) + "%";
+
+            const status = document.getElementById("status");
+
+            status.textContent = passed ? "PASS" : "FAIL";
+            status.className = passed ? "status pass" : "status fail";
+
+            result.style.display = "block";
+        });
+
+        // Display error message
+        function showMessage(text, background, color) {
+            message.textContent = text;
+            message.style.background = background;
+            message.style.color = color;
+            message.style.display = "block";
         }
+
+        // Reset form
+        document.getElementById("resetBtn").addEventListener("click", function() {
+            form.reset();
+            result.style.display = "none";
+            message.style.display = "none";
+        });
     </script>
 
 </body>
