@@ -1,0 +1,26 @@
+
+{
+  "catalogue": [
+    {
+      "id": "B001",
+      "title": "Web Design Basics",
+      "author": "A. Sharma",
+      "price": 299,
+      "available": true
+    },
+    {
+      "id": "B002",
+      "title": "JavaScript Starter",
+      "author": "R. Verma",
+      "price": 399,
+      "available": true
+    },
+    {
+      "id": "B003",
+      "title": "Learning CSS Grid",
+      "author": "M. Khan",
+      "price": 249,
+      "available": false
+    }
+  ]
+}

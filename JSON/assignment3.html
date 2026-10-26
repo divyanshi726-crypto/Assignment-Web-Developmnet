@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Relationships</title>
+</head>
+<body>
+  <main id="app">
+    <h1>Profile</h1>
+
+    <section>
+      <p class="name">Asha</p>
+      <button>Follow</button>
+    </section>
+  </main>
+
+  <script>
+    const main = document.querySelector("main");
+    const heading = document.querySelector("h1");
+    const section = document.querySelector("section");
+    const name = document.querySelector(".name");
+    const button = document.querySelector("button");
+
+    console.log("Main is parent of heading:",
+      heading.parentElement === main);
+
+    console.log("Main is parent of section:",
+      section.parentElement === main);
+
+    console.log("Section is parent of name:",
+      name.parentElement === section);
+
+    console.log("Section is parent of button:",
+      button.parentElement === section);
+
+    console.log("Name and button are siblings:",
+      name.nextElementSibling === button);
+  </script>
+</body>
+</html>
