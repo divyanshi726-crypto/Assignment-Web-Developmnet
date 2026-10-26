@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reusable Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 25px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 25px auto;
+    }
+    .card {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px #ddd;
+    }
+    .tag {
+      display: inline-block;
+      background: #e4e3ff;
+      color: #4940b8;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Learning Cards</h1>
+  <section id="cards"></section>
+
+  <script>
+    function createCard({
+      title,
+      description,
+      tag = "General"
+    }) {
+      const article = document.createElement("article");
+      article.className = "card";
+
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = description;
+
+      const badge = document.createElement("span");
+      badge.className = "tag";
+      badge.textContent = tag;
+
+      article.append(heading, paragraph, badge);
+
+      return article;
+    }
+
+    const cardsContainer = document.querySelector("#cards");
+
+    cardsContainer.append(
+      createCard({
+        title: "HTML",
+        description: "HTML structures web content.",
+        tag: "Web"
+      }),
+
+      createCard({
+        title: "CSS",
+        description: "CSS styles the webpage.",
+        tag: "Design"
+      }),
+
+      createCard({
+        title: "JavaScript",
+        description: "JavaScript adds interaction.",
+        tag: "Programming"
+      })
+    );
+  </script>
+</body>
+</html>

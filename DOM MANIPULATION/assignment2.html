@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+      background: #f5f5f5;
+    }
+    button {
+      padding: 12px 25px;
+      border: 1px solid #166534;
+      border-radius: 7px;
+      background: white;
+      color: #166534;
+      cursor: pointer;
+    }
+    button.active {
+      background: #166534;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Profile</h2>
+  <p>Welcome to my profile!</p>
+
+  <button id="follow" aria-pressed="false">Follow</button>
+  <p id="status">Not following</p>
+
+  <script>
+    const button = document.querySelector("#follow");
+    const status = document.querySelector("#status");
+
+    button.addEventListener("click", () => {
+      const active = button.getAttribute("aria-pressed") !== "true";
+
+      button.setAttribute("aria-pressed", String(active));
+      button.classList.toggle("active", active);
+
+      button.textContent = active ? "Following" : "Follow";
+      status.textContent = active ? "Following" : "Not following";
+    });
+  </script>
+</body>
+</html>

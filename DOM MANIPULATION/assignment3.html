@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Event Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 15px;
+      background: #f4f4ff;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+    }
+    input {
+      width: 95%;
+    }
+    button {
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Interactive Profile</h2>
+
+    <label for="nameInput">Name</label>
+    <input id="nameInput" placeholder="Enter your name">
+
+    <label for="bioInput">Bio</label>
+    <input id="bioInput" placeholder="Enter your bio">
+
+    <button id="updateBtn">Update Profile</button>
+    <button id="followBtn" aria-pressed="false">Follow</button>
+
+    <h3 id="profileName">Guest</h3>
+    <p id="profileBio">No bio yet</p>
+    <p id="status">Not following</p>
+
+    <h3>Event Map</h3>
+    <table>
+      <tr>
+        <th>Event</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Update button click</td>
+        <td>Updates profile name and bio</td>
+      </tr>
+      <tr>
+        <td>Follow button click</td>
+        <td>Toggles follow state</td>
+      </tr>
+      <tr>
+        <td>Name and bio input</td>
+        <td>Collects user-entered text</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const nameInput = document.querySelector("#nameInput");
+    const bioInput = document.querySelector("#bioInput");
+    const updateBtn = document.querySelector("#updateBtn");
+    const followBtn = document.querySelector("#followBtn");
+
+    updateBtn.addEventListener("click", () => {
+      document.querySelector("#profileName").textContent =
+        nameInput.value.trim() || "Guest";
+
+      document.querySelector("#profileBio").textContent =
+        bioInput.value.trim() || "No bio yet";
+    });
+
+    followBtn.addEventListener("click", () => {
+      const following =
+        followBtn.getAttribute("aria-pressed") !== "true";
+
+      followBtn.setAttribute("aria-pressed", String(following));
+      followBtn.textContent = following ? "Following" : "Follow";
+
+      document.querySelector("#status").textContent =
+        following ? "Following" : "Not following";
+    });
+  </script>
+</body>
+</html>
