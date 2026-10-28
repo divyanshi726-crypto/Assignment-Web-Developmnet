@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #f5f3ff;
+      color: #38383a;
+      transition: 0.3s;
+    }
+    .panel {
+      width: min(400px, 85%);
+      padding: 30px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px #ddd6fe;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #c4b5fd;
+    }
+    body[data-theme="dark"] {
+      background: #111827;
+      color: white;
+    }
+    body[data-theme="dark"] .panel {
+      background: #1f2937;
+      box-shadow: 0 8px 25px #030712;
+    }
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h2>🎨 Settings Panel</h2>
+    <p>Choose your preferred website theme.</p>
+
+    <label for="theme">Select Theme</label>
+    <select id="theme">
+      <option value="light">Light Theme</option>
+      <option value="dark">Dark Theme</option>
+    </select>
+
+    <p id="status" aria-live="polite"></p>
+  </div>
+
+  <script>
+    const themeSelect = document.querySelector("#theme");
+    const status = document.querySelector("#status");
+
+    function applyTheme(theme) {
+      document.body.dataset.theme = theme;
+      themeSelect.value = theme;
+    }
+
+    let savedTheme = "light";
+
+    try {
+      const storedTheme = localStorage.getItem("theme");
+
+      if (storedTheme === "light" || storedTheme === "dark") {
+        savedTheme = storedTheme;
+      }
+    } catch (error) {
+      status.textContent = "Storage unavailable; using default theme.";
+    }
+
+    applyTheme(savedTheme);
+
+    themeSelect.addEventListener("change", () => {
+      applyTheme(themeSelect.value);
+
+      try {
+        localStorage.setItem("theme", themeSelect.value);
+        status.textContent = "Theme saved successfully!";
+      } catch (error) {
+        status.textContent = "Could not save theme in this browser.";
+      }
+    });
+  </script>
+</body>
+</html>

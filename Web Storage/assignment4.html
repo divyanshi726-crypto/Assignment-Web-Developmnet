@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Lifecycle Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+      padding: 25px;
+    }
+    .card {
+      max-width: 500px;
+      margin: 25px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px #c4b5fd;
+    }
+    input, button {
+      padding: 11px;
+      margin: 5px 0;
+      border-radius: 8px;
+    }
+    input {
+      width: 95%;
+      border: 1px solid #ddd6fe;
+    }
+    button {
+      background: #9333ea;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    li {
+      padding: 8px;
+      margin: 6px 0;
+      background: #f5f3ff;
+      border-radius: 7px;
+      overflow-wrap: anywhere;
+    }
+    #message {
+      color: #6b21a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>📋 Persistent Task Lifecycle</h2>
+    <p>Tasks are loaded, updated, saved and rendered.</p>
+
+    <form id="taskForm">
+      <input id="taskInput" placeholder="Enter a task" required>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="taskList"></ul>
+    <p id="message" aria-live="polite"></p>
+  </div>
+
+  <script>
+    const input = document.querySelector("#taskInput");
+    const form = document.querySelector("#taskForm");
+    const list = document.querySelector("#taskList");
+    const message = document.querySelector("#message");
+
+    // 1. LOAD saved tasks
+    let tasks = [];
+
+    try {
+      const saved = JSON.parse(localStorage.getItem("lifecycleTasks") || "[]");
+
+      if (Array.isArray(saved)) {
+        tasks = saved.filter(task =>
+          task &&
+          typeof task.text === "string" &&
+          typeof task.done === "boolean"
+        );
+      }
+    } catch (error) {
+      tasks = [];
+    }
+
+    // 4. RENDER tasks on the page
+    function renderTasks() {
+      list.replaceChildren();
+
+      if (tasks.length === 0) {
+        const empty = document.createElement("li");
+        empty.textContent = "No tasks yet. Add your first task!";
+        list.append(empty);
+      }
+
+      tasks.forEach((task, index) => {
+        const item = document.createElement("li");
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.checked = task.done;
+        checkbox.setAttribute("aria-label", "Complete " + task.text);
+
+        checkbox.addEventListener("change", () => {
+          task.done = checkbox.checked;
+          saveAndRender();
+        });
+
+        const text = document.createElement("span");
+        text.textContent = " " + task.text;
+
+        if (task.done) {
+          text.style.textDecoration = "line-through";
+        }
+
+        const remove = document.createElement("button");
+        remove.textContent = "Delete";
+
+        remove.addEventListener("click", () => {
+          tasks.splice(index, 1);
+          saveAndRender();
+        });
+
+        item.append(checkbox, text, remove);
+        list.append(item);
+      });
+    }
+
+    // 2. UPDATE state, 3. SAVE data, 4. RENDER page
+    function saveAndRender() {
+      try {
+        localStorage.setItem("lifecycleTasks", JSON.stringify(tasks));
+        message.textContent = "Changes saved successfully!";
+      } catch (error) {
+        message.textContent = "Could not save changes.";
+      }
+
+      renderTasks();
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const text = input.value.trim();
+
+      if (!text) {
+        message.textContent = "Please enter a task.";
+        return;
+      }
+
+      // UPDATE in-memory state
+      tasks.push({ text: text, done: false });
+
+      input.value = "";
+      saveAndRender();
+      input.focus();
+    });
+
+    // Initial render after loading saved data
+    renderTasks();
+  </script>
+</body>
+</html>

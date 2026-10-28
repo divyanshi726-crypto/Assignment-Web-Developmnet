@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persistent To-Do App</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #dad8e3, #3e3d3e);
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px #2e2e2f;
+    }
+
+    h1, h2 {
+      color: #141414;
+    }
+
+    .subtitle {
+      color: #777;
+    }
+
+    form {
+      display: flex;
+      gap: 8px;
+    }
+
+    input, select, button {
+      padding: 11px;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    #taskInput {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #ddd6fe;
+    }
+
+    button {
+      border: none;
+      background: #0a0a0a;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid #1d1c1d;
+      outline-offset: 2px;
+    }
+
+    .filters {
+      margin: 18px 0;
+    }
+
+    #filter {
+      border: 1px solid #060606;
+      background: white;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px;
+      margin: 9px 0;
+      border-radius: 10px;
+      background: #f5f3ff;
+      overflow-wrap: anywhere;
+    }
+
+    .task-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .delete {
+      background: #e11d48;
+    }
+
+    .checklist {
+      margin-top: 25px;
+      padding: 16px;
+      background: #faf5ff;
+      border-radius: 12px;
+    }
+
+    .checklist label {
+      display: block;
+      margin: 10px 0;
+      color: #444;
+    }
+
+    .checklist input {
+      accent-color: #131313;
+    }
+
+    #status {
+      color: #262527;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        padding: 17px;
+      }
+
+      form {
+        flex-wrap: wrap;
+      }
+
+      #taskInput {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>📝 My To-Do App</h1>
+    <p class="subtitle">Organize your day and save your progress!</p>
+
+    <form id="taskForm">
+      <input
+        id="taskInput"
+        placeholder="Enter a task..."
+        required
+        aria-label="New task"
+      >
+      <button type="submit">+ Add Task</button>
+    </form>
+
+    <div class="filters">
+      <label for="filter">Filter tasks: </label>
+      <select id="filter">
+        <option value="all">All</option>
+        <option value="active">Active</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+
+    <p id="counts">Total: 0 | Completed: 0 | Remaining: 0</p>
+
+    <ul id="taskList"></ul>
+    <p id="status" aria-live="polite"></p>
+
+    <section class="checklist">
+      <h2>Testing Checklist</h2>
+      <label><input type="checkbox"> Add a task</label>
+      <label><input type="checkbox"> Edit a task</label>
+      <label><input type="checkbox"> Complete and uncomplete a task</label>
+      <label><input type="checkbox"> Filter tasks</label>
+      <label><input type="checkbox"> Delete a task</label>
+      <label><input type="checkbox"> Refresh and check saved tasks</label>
+      <label><input type="checkbox"> Try submitting an empty task</label>
+      <label><input type="checkbox"> Test the layout on mobile</label>
+    </section>
+  </main>
+
+  <script>
+    const form = document.querySelector("#taskForm");
+    const input = document.querySelector("#taskInput");
+    const list = document.querySelector("#taskList");
+    const filter = document.querySelector("#filter");
+    const counts = document.querySelector("#counts");
+    const status = document.querySelector("#status");
+
+    let tasks = [];
+    let nextId = 1;
+
+    // Load saved tasks safely
+    try {
+      const saved = JSON.parse(localStorage.getItem("todoTasks") || "[]");
+
+      if (Array.isArray(saved)) {
+        tasks = saved.filter(task =>
+          task &&
+          Number.isInteger(task.id) &&
+          typeof task.text === "string" &&
+          typeof task.done === "boolean"
+        );
+      }
+    } catch (error) {
+      tasks = [];
+      status.textContent = "Saved data could not be read. Starting a new list.";
+    }
+
+    nextId = tasks.reduce((max, task) => Math.max(max, task.id), 0) + 1;
+
+    function saveTasks() {
+      try {
+        localStorage.setItem("todoTasks", JSON.stringify(tasks));
+        return true;
+      } catch (error) {
+        status.textContent = "Unable to save. Browser storage may be full or unavailable.";
+        return false;
+      }
+    }
+
+    function renderTasks() {
+      list.replaceChildren();
+
+      const visible = tasks.filter(task => {
+        if (filter.value === "active") return !task.done;
+        if (filter.value === "completed") return task.done;
+        return true;
+      });
+
+      if (visible.length === 0) {
+        const empty = document.createElement("li");
+        empty.textContent = tasks.length === 0
+          ? "🌸 No tasks yet. Add your first task!"
+          : "No tasks match this filter.";
+        list.append(empty);
+      }
+
+      visible.forEach(task => {
+        const item = document.createElement("li");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.done;
+        checkbox.setAttribute("aria-label", "Complete " + task.text);
+
+        checkbox.addEventListener("change", () => {
+          task.done = checkbox.checked;
+          saveTasks();
+          renderTasks();
+        });
+
+        const text = document.createElement("span");
+        text.className = "task-text";
+        text.textContent = task.text;
+
+        if (task.done) text.classList.add("completed");
+
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.textContent = "Edit";
+
+        edit.addEventListener("click", () => {
+          const updated = prompt("Enter updated task:", task.text);
+
+          if (updated === null) return;
+
+          if (!updated.trim()) {
+            status.textContent = "Task cannot be empty.";
+            return;
+          }
+
+          task.text = updated.trim();
+          saveTasks();
+          renderTasks();
+          status.textContent = "Task updated.";
+        });
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "Delete";
+        remove.className = "delete";
+
+        remove.addEventListener("click", () => {
+          tasks = tasks.filter(item => item.id !== task.id);
+          saveTasks();
+          renderTasks();
+          status.textContent = "Task deleted.";
+        });
+
+        item.append(checkbox, text, edit, remove);
+        list.append(item);
+      });
+
+      const completed = tasks.filter(task => task.done).length;
+
+      counts.textContent =
+        `Total: ${tasks.length} | Completed: ${completed} | Remaining: ${tasks.length - completed}`;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const text = input.value.trim();
+
+      if (!text) {
+        status.textContent = "Please enter a task.";
+        return;
+      }
+
+      tasks.push({
+        id: nextId++,
+        text: text,
+        done: false
+      });
+
+      input.value = "";
+
+      if (saveTasks()) {
+        status.textContent = "Task added and saved!";
+      }
+
+      renderTasks();
+      input.focus();
+    });
+
+    filter.addEventListener("change", renderTasks);
+
+    renderTasks();
+  </script>
+</body>
+</html>

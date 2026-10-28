@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Storage Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ddd6fe, #fce7f3);
+      padding: 25px;
+    }
+    .card {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px #c4b5fd;
+    }
+    input, button {
+      padding: 11px;
+      margin: 6px 0;
+      border-radius: 8px;
+    }
+    input {
+      width: 95%;
+      border: 1px solid #ddd6fe;
+    }
+    button {
+      border: none;
+      background: #9333ea;
+      color: white;
+      cursor: pointer;
+    }
+    #output {
+      overflow-wrap: anywhere;
+      color: #6b21a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>💾 Web Storage Demo</h2>
+    <input id="note" placeholder="Enter a note">
+    <br>
+    <button id="saveLocal">Save to localStorage</button>
+    <button id="saveSession">Save to sessionStorage</button>
+    <button id="showData">Show Saved Data</button>
+    <p id="output">Your saved data will appear here.</p>
+  </div>
+
+  <script>
+    const note = document.querySelector("#note");
+    const output = document.querySelector("#output");
+
+    document.querySelector("#saveLocal").addEventListener("click", () => {
+      localStorage.setItem("myNote", note.value);
+      output.textContent = "Note saved in localStorage!";
+    });
+
+    document.querySelector("#saveSession").addEventListener("click", () => {
+      sessionStorage.setItem("myNote", note.value);
+      output.textContent = "Note saved in sessionStorage!";
+    });
+
+    document.querySelector("#showData").addEventListener("click", () => {
+      const localNote = localStorage.getItem("myNote");
+      const sessionNote = sessionStorage.getItem("myNote");
+
+      output.textContent =
+        "Local: " + (localNote ?? "No saved note") +
+        " | Session: " + (sessionNote ?? "No saved note");
+    });
+  </script>
+</body>
+</html>
