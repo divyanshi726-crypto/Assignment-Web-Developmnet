@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reading List</title>
+</head>
+<body>
+  <h2>My Reading List</h2>
+
+  <form id="bookForm">
+    <input id="bookName" required placeholder="Enter book title">
+    <button type="submit">Add Book</button>
+  </form>
+
+  <ul id="readingList"></ul>
+
+  <script>
+    const form = document.querySelector("#bookForm");
+    const input = document.querySelector("#bookName");
+    const list = document.querySelector("#readingList");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const title = input.value.trim();
+
+      if (!title) return;
+
+      const item = document.createElement("li");
+      item.textContent = title;
+      list.append(item);
+
+      input.value = "";
+      input.focus();
+    });
+  </script>
+</body>
+</html>

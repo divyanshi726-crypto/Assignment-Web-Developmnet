@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Test Matrix</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 25px;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ddd6fe, #fce7f3, #e9d5ff);
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 25px auto;
+      padding: 28px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(100, 50, 120, 0.15);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .icon {
+      font-size: 40px;
+    }
+
+    h1 {
+      color: #6b21a8;
+      margin: 10px 0;
+    }
+
+    .header p {
+      color: #777;
+    }
+
+    .summary {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 120px;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      background: #f5f3ff;
+    }
+
+    .stat h2 {
+      margin: 0 0 6px;
+      color: #7e22ce;
+    }
+
+    .stat p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th {
+      background: linear-gradient(90deg, #7e22ce, #c026d3);
+      color: white;
+      padding: 14px;
+      text-align: left;
+    }
+
+    td {
+      padding: 13px;
+      border-bottom: 1px solid #eee;
+      color: #444;
+    }
+
+    tbody tr:hover {
+      background: #faf5ff;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 11px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .pass {
+      color: #166534;
+      background: #dcfce7;
+    }
+
+    .fail {
+      color: #991b1b;
+      background: #fee2e2;
+    }
+
+    .pending {
+      color: #92400e;
+      background: #fef3c7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    button {
+      padding: 11px 17px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .run {
+      background: #7e22ce;
+      color: white;
+    }
+
+    .reset {
+      background: #f3e8ff;
+      color: #6b21a8;
+    }
+
+    #message {
+      color: #6b21a8;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      font-size: 12px;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="icon">🧪</div>
+      <h1>Validation Test Matrix</h1>
+      <p>Test cases and results for the Contact Form</p>
+    </div>
+
+    <div class="summary">
+      <div class="stat">
+        <h2 id="total">5</h2>
+        <p>Total Tests</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="passed">0</h2>
+        <p>Passed</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="failed">0</h2>
+        <p>Failed</p>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Test Case</th>
+            <th>Expected Result</th>
+            <th>Actual Result</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="testTable">
+          <tr>
+            <td>TC01</td>
+            <td>Valid details</td>
+            <td>Form accepts input</td>
+            <td class="actual">Not tested</td>
+            <td><span class="status pending">PENDING</span></td>
+          </tr>
+
+          <tr>
+            <td>TC02</td>
+            <td>Empty name</td>
+            <td>Form rejects input</td>
+            <td class="actual">Not tested</td>
+            <td><span class="status pending">PENDING</span></td>
+          </tr>
+
+          <tr>
+            <td>TC03</td>
+            <td>Invalid email</td>
+            <td>Form rejects email</td>
+            <td class="actual">Not tested</td>
+            <td><span class="status pending">PENDING</span></td>
+          </tr>
+
+          <tr>
+            <td>TC04</td>
+            <td>Empty message</td>
+            <td>Form rejects input</td>
+            <td class="actual">Not tested</td>
+            <td><span class="status pending">PENDING</span></td>
+          </tr>
+
+          <tr>
+            <td>TC05</td>
+            <td>Spaces-only name</td>
+            <td>Custom validation rejects it</td>
+            <td class="actual">Not tested</td>
+            <td><span class="status pending">PENDING</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button class="run" id="runTests">▶ Run Demo Tests</button>
+      <button class="reset" id="resetTests">↻ Reset Tests</button>
+    </div>
+
+    <p id="message" aria-live="polite">
+      Click Run Demo Tests to see the sample results.
+    </p>
+
+    <footer>
+      Created using HTML, CSS & JavaScript
+    </footer>
+  </div>
+
+  <script>
+    const rows = document.querySelectorAll("#testTable tr");
+    const message = document.querySelector("#message");
+
+    function updateSummary() {
+      let passed = 0;
+      let failed = 0;
+      let pending = 0;
+
+      rows.forEach(row => {
+        const status = row.querySelector(".status").textContent;
+
+        if (status === "PASS") passed++;
+        else if (status === "FAIL") failed++;
+        else pending++;
+      });
+
+      document.querySelector("#total").textContent = rows.length;
+      document.querySelector("#passed").textContent = passed;
+      document.querySelector("#failed").textContent = failed;
+
+      return pending;
+    }
+
+    document.querySelector("#runTests").addEventListener("click", () => {
+      // Demonstration data, not tests of a live contact form.
+      const results = [
+        ["PASS", "Valid input accepted"],
+        ["PASS", "Empty name rejected"],
+        ["PASS", "Invalid email rejected"],
+        ["PASS", "Empty message rejected"],
+        ["PASS", "Spaces-only name rejected"]
+      ];
+
+      rows.forEach((row, index) => {
+        const actual = row.querySelector(".actual");
+        const badge = row.querySelector(".status");
+        const [status, description] = results[index];
+
+        actual.textContent = description;
+        badge.textContent = status;
+        badge.className = "status " + status.toLowerCase();
+      });
+
+      updateSummary();
+      message.textContent =
+        "Demo complete: sample results displayed. Connect actual form tests to verify real behaviour.";
+    });
+
+    document.querySelector("#resetTests").addEventListener("click", () => {
+      rows.forEach(row => {
+        row.querySelector(".actual").textContent = "Not tested";
+
+        const badge = row.querySelector(".status");
+        badge.textContent = "PENDING";
+        badge.className = "status pending";
+      });
+
+      updateSummary();
+      message.textContent = "Tests reset. Click Run Demo Tests to view sample results.";
+    });
+
+    updateSummary();
+  </script>
+</body>
+</html>
