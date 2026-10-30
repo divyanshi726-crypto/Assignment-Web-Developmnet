@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Product Store</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e293b;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px #0001;
+    }
+
+    input, select, form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .add-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px #0001;
+      
+    }
+
+    .product-card h3 {
+      color: #2563eb;
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #15803d;
+    }
+
+    .category {
+      color: #64748b;
+    }
+
+    .delete-btn {
+      background: #1fe409;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .empty {
+      text-align: center;
+      color: #64748b;
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>🛍️ Dynamic Product Store</h1>
+
+    <form id="productForm">
+      <input
+        type="text"
+        id="productName"
+        placeholder="Enter product name"
+        required
+      >
+
+      <input
+        type="number"
+        id="productPrice"
+        placeholder="Enter product price"
+        min="0.01"
+        step="0.01"
+        required
+      >
+
+      <select id="productCategory" required>
+        <option value="">Select Category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Books">Books</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <button type="submit" class="add-btn">
+        + Add Product
+      </button>
+    </form>
+
+    <div id="products" class="products">
+      <p class="empty">No products added yet.</p>
+    </div>
+  </div>
+
+  <script>
+   let form=document.querySelector("#productForm")
+   let inputName=document.querySelector("#productName")
+   let inputPrice=document.querySelector("#productPrice")
+   let inputCategory=document.querySelector("#productCategory")
+   let cardproduct=document.querySelector("#products")
+
+   function createCard(name,price,category){
+    let card=document.createElement("div")
+    card.classList.add("product-card")
+    
+    let title=document.createElement("h1")
+    title.textContent=name
+    title.style.fontSize="24px"
+    let pricetext=document.createElement("h3")
+    pricetext.textContent=price
+    pricetext.classList.add("price")
+    let categorytext=document.createElement("p")
+    categorytext.textContent=category
+    categorytext.classList.add("category")
+    let deletebtn=document.createElement("button")
+    deletebtn.textContent="Delete"
+    deletebtn.classList.add("delete-btn")
+    deletebtn.addEventListener("click",()=>{
+        card.remove()
+        if(cardproduct.children.length===0){
+            let emptymsg=document.createElement("p")
+            emptymsg.textContent="No products added yet."
+            emptymsg.classList.add("empty")
+            cardproduct.append(emptymsg)
+        }
+    })
+
+    card.append(title,pricetext,categorytext,deletebtn)
+    return card   
+   }
+
+   form.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    let name=inputName.value.trim()
+    let price=Number(inputPrice.value)
+    let category=inputCategory.value
+
+    if(name==="" || price<=0 || category===""){
+        alert("Please fill all fields correctly.")
+        return
+    }
+
+    let card=createCard(name,price,category)
+    cardproduct.append(card)
+
+   })
+
+   cardproduct.addEventListener("click",(event)=>{
+    if(event.target.classList.contain("delete-btn")){
+      let card=event.target.closest(".product-card")
+      card.remove();
+    }
+    if(document.querySelectorAll("#cardProduct").length==0){
+    let smgAdd=document.createElement("p")
+    smgAdd.textContent="NO products added yet."
+    smgAdd.classList.add("empty")
+    cardproduct.append(smgAdd)
+
+   }
+
+    
+   })
+
+
+   
+  </script>
+
+</body>
+</html>
