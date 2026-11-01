@@ -1,0 +1,44 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font: 16px Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 30px auto;
+    text-align: center;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 3px solid orange;
+}

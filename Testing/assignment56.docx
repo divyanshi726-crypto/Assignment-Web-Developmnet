@@ -1,0 +1,9 @@
+Test	Expected result
+Add valid task	Task appears
+Submit blank title	Error appears
+Edit task	Updated title appears
+Complete task	Status changes
+Active filter	Completed tasks hidden
+Delete task	Task removed
+Refresh page	Saved tasks return
+Mobile screen	No horizontal overflow

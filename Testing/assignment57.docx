@@ -1,0 +1,5 @@
+Issue	Cause	                     Fix
+Blank task added	                  Validation missing	Check empty title
+Tasks disappear	Save                 function missing	Save after changes
+Filter incorrect	              Wrong condition	Correct filter logic
+Long title overflows	            Fixed-width layout	Allow text wrapping
