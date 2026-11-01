@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Task Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Student Task Planner</h1>
+            <p>Organize your assignments and deadlines</p>
+        </header>
+
+        <main>
+
+            <section class="task-form">
+
+                <h2>Add New Task</h2>
+
+                <form id="taskForm">
+
+                    <label for="title">Task Title</label>
+                    <input type="text"
+                           id="title"
+                           placeholder="Enter task title"
+                           required>
+
+                    <label for="subject">Subject</label>
+                    <input type="text"
+                           id="subject"
+                           placeholder="Enter subject"
+                           required>
+
+                    <label for="dueDate">Due Date</label>
+                    <input type="date"
+                           id="dueDate"
+                           required>
+
+                    <button type="submit">Add Task</button>
+
+                </form>
+
+            </section>
+
+            <section class="task-list">
+
+                <h2>My Tasks</h2>
+
+                <div id="taskList">
+                    <p>No tasks added yet.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Student Task Planner | 2026</p>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

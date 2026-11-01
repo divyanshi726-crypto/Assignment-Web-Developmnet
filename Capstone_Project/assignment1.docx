@@ -1,0 +1,27 @@
+. Project Introduction
+Student Task Planner is a web-based application that helps students organize their academic tasks, assignments and deadlines. Students can add, edit, delete and manage their tasks from one place.
+2. Core Features
+1. Add new tasks.
+2. Edit existing tasks.
+3. Delete tasks.
+4. Add subject names.
+5. Set task due dates.
+6. Mark tasks as completed.
+7. Filter tasks into All, Active and Completed.
+8. Store tasks using Local Storage.
+9. Responsive layout for mobile and desktop.
+3. User Requirements
+Requirement	Description
+Task title	Cannot be empty
+Subject	Must be entered
+Due date	Must be a valid date
+Storage	Data should remain after refresh
+Responsive	Should work on mobile and desktop
+Keyboard accessibility	Form should be usable with keyboard
+
+4. Future Scope
+- Task reminder notifications.
+- User login and registration.
+- Cloud database integration.
+- Monthly task reports.
+Expected Output: A written project proposal containing the project name, purpose, features, requirements and future scope.

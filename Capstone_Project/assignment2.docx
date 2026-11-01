@@ -1,0 +1,160 @@
+Wireframe & Documented User Flow
+
+Project Name: Student Task Planner
+
+1. Introduction
+
+A wireframe is a basic visual layout of a website. It shows the placement of different elements such as headings, forms, buttons and task lists.
+
+The user flow explains how a user interacts with the website step by step.
+
+2. Website Wireframe
+
+Student Task Planner – Home Page
+
++------------------------------------------+
+|          STUDENT TASK PLANNER            |
+|    Manage your assignments and tasks     |
++------------------------------------------+
+|                                          |
+|              ADD NEW TASK                |
+|                                          |
+|  Task Title:  [____________________]     |
+|                                          |
+|  Subject:     [____________________]     |
+|                                          |
+|  Due Date:    [____________________]     |
+|                                          |
+|              [ ADD TASK ]                |
+|                                          |
++------------------------------------------+
+|                MY TASKS                  |
+|                                          |
+|  [ All ] [ Active ] [ Completed ]        |
+|                                          |
+|  Java Assignment                         |
+|  Subject: Java                           |
+|  Due Date: 10 November 2026              |
+|  [Edit] [Complete] [Delete]              |
+|                                          |
+|  Maths Homework                          |
+|  Subject: Maths                          |
+|  Due Date: 12 November 2026              |
+|  [Edit] [Complete] [Delete]              |
+|                                          |
++------------------------------------------+
+|                  FOOTER                  |
++------------------------------------------+
+
+3. Main Components
+
+Component
+
+Purpose
+
+Header
+
+Displays project name
+
+Task Title
+
+Enters task name
+
+Subject
+
+Enters subject name
+
+Due Date
+
+Selects deadline
+
+Add Task Button
+
+Adds a new task
+
+Task List
+
+Displays saved tasks
+
+Filter Buttons
+
+Filters tasks
+
+Edit Button
+
+Updates a task
+
+Complete Button
+
+Marks task completed
+
+Delete Button
+
+Removes a task
+
+4. Documented User Flow
+
+           START
+             |
+             v
+        Open Website
+             |
+             v
+       Enter Task Details
+             |
+             v
+        Click Add Task
+             |
+             v
+        Validate Details
+             |
+       +-----+------+
+       |            |
+       v            v
+     Valid        Invalid
+       |            |
+       v            v
+    Save Task    Show Error
+       |
+       v
+   Display Task
+       |
+       v
+   Manage Task
+       |
+   +---+------+------+
+   |          |      |
+   v          v      v
+  Edit     Complete Delete
+   |          |      |
+   +----------+------+
+              |
+              v
+          Save Changes
+              |
+              v
+             END
+
+5. User Flow Explanation
+
+The user opens the Student Task Planner website.
+
+The user enters the task title, subject and due date.
+
+The user clicks the Add Task button.
+
+The application validates the entered information.
+
+If the information is valid, the task is saved.
+
+The task is displayed in the task list.
+
+The user can edit, complete or delete a task.
+
+6. Expected Result
+
+The wireframe provides a clear visual representation of the Student Task Planner website. The user flow explains the complete interaction between the user and the application.
+
+7. Conclusion
+
+The wireframe and user flow help in planning the website before development. They make the design and functionality easier to understand and implement.

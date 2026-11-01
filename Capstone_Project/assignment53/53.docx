@@ -1,0 +1,80 @@
+# ASSIGNMENT 53
+## Architecture Notes & Starter Utility Functions
+
+**Project Name:** Student Task Planner
+
+### 1. Introduction
+
+Project architecture describes how different parts of an application work together. Student Task Planner uses HTML, CSS and JavaScript to manage student assignments and deadlines.
+
+### 2. Project Architecture
+
+The project follows a simple structure:
+
+```text
+        HTML + CSS
+             |
+             v
+       User Interface
+             |
+             v
+       Event Handlers
+             |
+             v
+        State Array
+             |
+             v
+       Storage Helper
+        (Local Storage)
+             |
+             v
+       Render Function
+             |
+             v
+        Updated UI
+```
+
+### 3. Explanation of Components
+
+**HTML:** Creates the structure of the webpage.
+
+**CSS:** Provides colors, spacing and responsive design.
+
+**JavaScript:** Handles user actions and application logic.
+
+**State Array:** Temporarily stores task information while the website is running.
+
+**Local Storage:** Saves task information in the browser.
+
+**Render Function:** Displays the latest task information on the webpage.
+
+### 4. Utility Functions
+
+Utility functions are reusable blocks of code that perform specific tasks.
+
+The main utility functions are:
+
+1. createTask() – Creates a new task.
+2. validateTask() – Checks task details.
+3. saveTasks() – Saves tasks in Local Storage.
+4. loadTasks() – Loads saved tasks.
+5. filterTasks() – Filters tasks according to their status.
+
+### 5. Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- Browser Local Storage
+
+### 6. Advantages of Project Architecture
+
+- Easy to understand.
+- Easy to maintain.
+- Reusable functions.
+- Better code organization.
+- Easy to add new features.
+
+### 7. Conclusion
+
+The architecture of Student Task Planner divides the application into different components. Utility functions make the JavaScript code reusable and easier to manage.

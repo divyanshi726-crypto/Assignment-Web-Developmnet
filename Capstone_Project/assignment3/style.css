@@ -1,0 +1,106 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+.task-form,
+.task-list {
+    background: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000015;
+}
+
+h2 {
+    margin-bottom: 18px;
+    color: #334155;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 7px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+button {
+    margin-top: 18px;
+    padding: 12px 22px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+    padding: 15px;
+    color: #64748b;
+}
+
+/* Responsive Design */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    .task-form,
+    .task-list {
+        padding: 16px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
